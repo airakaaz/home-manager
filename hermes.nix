@@ -1,8 +1,8 @@
 {
+  programs.hermes-agent.enable = true;
+
   services.hermes-agent = {
     enable = true;
-    installPackage = true;
-
     gateway.enable = true;
     extraDependencyGroups = [
       "messaging"
