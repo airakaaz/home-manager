@@ -22,13 +22,32 @@
       hermes-agent,
       ...
     }:
+    let
+      mkHome =
+        { system, enableHermes }:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          extraSpecialArgs = {
+            inherit hermes-agent enableHermes;
+          };
+          modules = [
+            ./home.nix
+          ];
+        };
+    in
     {
-      homeConfigurations.kaz = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = { inherit hermes-agent; };
-        modules = [
-          ./home.nix
-        ];
+      homeConfigurations = {
+        # Default config for Phantom: shared config + Hermes.
+        kaz-phantom = mkHome {
+          system = "x86_64-linux";
+          enableHermes = true;
+        };
+
+        # Specter gets the exact same shared config without Hermes.
+        kaz-specter = mkHome {
+          system = "aarch64-linux";
+          enableHermes = false;
+        };
       };
     };
 }
