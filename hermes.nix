@@ -1,4 +1,10 @@
+{ pkgs, ... }:
 {
+  home.packages = with pkgs; [
+    ffmpeg
+    python313Packages.edge-tts
+  ];
+
   programs.hermes-agent.enable = true;
 
   services.hermes-agent = {
