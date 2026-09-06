@@ -32,6 +32,7 @@
       # treesitter
       nvim-treesitter
       nvim-treesitter-parsers.bash
+      nvim-treesitter-parsers.fish
       nvim-treesitter-parsers.c
       nvim-treesitter-parsers.cpp
       nvim-treesitter-parsers.cmake
@@ -67,6 +68,9 @@
     extraPackages = with pkgs; [
       nixd
       nixfmt
+
+      bash-language-server
+      fish-lsp
 
       basedpyright
       ruff
