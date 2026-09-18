@@ -28,6 +28,8 @@
       nvim-lspconfig
       nvim-cmp
       flash-nvim
+      gitsigns-nvim
+      conform-nvim
 
       # treesitter
       nvim-treesitter
@@ -68,6 +70,7 @@
     extraPackages = with pkgs; [
       nixd
       nixfmt
+      stylua
 
       bash-language-server
       fish-lsp
